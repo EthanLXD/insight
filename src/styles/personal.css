@@ -1,0 +1,191 @@
+/* ================================================================
+   个人调查服务页样式  /  Personal Investigation Page Styles
+   ================================================================ */
+
+.service-page {
+  display: none;
+}
+
+.service-page.active {
+  display: block;
+}
+
+/* ── About sub-pages ── */
+.about-page {
+  display: none;
+}
+
+.about-page.active {
+  display: block;
+}
+
+/* ── Page intro text ── */
+#service-personal .service-intro {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary, #555);
+  margin: 0 0 0.4rem;
+}
+
+.personal-page-note {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary, #888);
+  font-style: italic;
+  margin: 0 0 2.25rem;
+}
+
+/* ── Module list container ── */
+.personal-modules {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* ── Single module card ── */
+.personal-module {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+/* ── Full-width header — full-bleed to match banner width exactly ── */
+.personal-module-header {
+  background: #e5e7eb;
+  margin-top: 1rem;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
+  box-sizing: border-box;
+  padding: 1.5rem var(--space-xl);
+}
+
+.personal-module-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--page-text, #1a1a1a);
+  margin: 0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ── Two-column content area below the header ── */
+.personal-module-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+}
+
+/* ── Module body (text side) ── */
+.personal-module-body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Module description ── */
+.personal-module-desc {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--color-text-secondary, #444);
+  margin: 1.5rem 2rem 1.25rem 2rem;
+  flex: 1;
+}
+
+/* ── Scope section ── */
+.personal-module-scope {
+  padding: 0 2rem 2rem 2rem;
+}
+
+.personal-module-scope-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #222);
+  margin: 0 0 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.service-content .personal-module-list li,
+.personal-module-list li {
+  list-style: none;
+}
+
+.personal-module-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.personal-module-list li {
+  list-style: none;
+  font-size: 0.975rem;
+  color: var(--color-text-secondary, #444);
+  padding-left: 1.1rem;
+  position: relative;
+  line-height: 1.65;
+}
+
+.personal-module-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.52em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #111;
+}
+
+/* ── Image (right side, fills full column height) ── */
+.personal-module-img {
+  overflow: hidden;
+  min-height: 280px;
+  padding: 1.25rem 0 1.25rem 1.25rem;
+}
+
+.personal-module-img-inner {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  background: var(--color-bg-soft, #f5f2ed);
+  border-left: 1px dashed var(--color-border, #ddd6cc);
+}
+
+.personal-module-img-photo {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .personal-module-content {
+    grid-template-columns: 1fr;
+  }
+
+  .personal-module-desc {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .personal-module-scope {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .personal-module-img {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+@media (max-width: 640px) {
+  .personal-module-img {
+    height: 160px;
+  }
+}

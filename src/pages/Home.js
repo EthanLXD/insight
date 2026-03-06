@@ -1,16 +1,69 @@
 /**
- * 首页：灰色横幅 + 轮播图（本地图片）+ 公司介绍（AZ/NZS ISO 9001 高亮）+ 四块图文
+ * 首页：灰色横幅 + 轮播图（本地图片）+ 公司介绍 + 四块图文
  */
 import { t } from '../i18n/index.js';
-import { ROUTES } from '../config/index.js';
-import { getSectionId } from '../core/Router.js';
+import { ROUTES, CONTACT } from '../config/index.js';
+import { getSectionId, navigate } from '../core/Router.js';
 
-const CAROUSEL_IMAGES = ['/images/carousel-1.jpg', '/images/carousel-2.jpg', '/images/carousel-3.jpg'];
+const CAROUSEL_IMAGES = ['/images/image1.jpg', '/images/image2.jpg', '/images/image1.jpg'];
 const BLOCK_IMAGES = [
-  '/images/surveillance.jpg',
-  '/images/bug-sweeps.jpg',
-  '/images/finding-missing-person.jpg',
+  '/images/personmissing.png',
+  '/images/evigathering.png',
+  '/images/immigration.png',
 ];
+
+const SERVICE_CARDS = [
+  {
+    sub: 'personal',
+    images: ['/images/personalInv.jpg', '/images/marriedINV.png', '/images/personmissing.png'],
+    modules: ['bg', 'relationship', 'missing', 'identity', 'assets'],
+  },
+  {
+    sub: 'corporate',
+    images: ['/images/corporate_investigatio.png', '/images/detectivebusiness.png', '/images/fraud.jpg'],
+    modules: ['bg', 'partner', 'fraud', 'due', 'ip'],
+  },
+  {
+    sub: 'legal',
+    images: ['/images/litigation.jpg', '/images/assettracing.jpg', '/images/debtor.jpg'],
+    modules: ['litigation', 'asset', 'debtor', 'witness'],
+  },
+  {
+    sub: 'international',
+    images: ['/images/chinabackgroundcheck.jpg', '/images/chinacorp.jpg', '/images/chinaasset.jpg'],
+    modules: ['bg', 'corp', 'asset', 'missing'],
+  },
+];
+
+function renderServiceShowcase() {
+  const cards = SERVICE_CARDS.map(({ sub, images, modules }) => {
+    const slides = images.map(
+      (src, i) => `<div class="home-svc-slide${i === 0 ? ' active' : ''}"><img class="home-svc-img" src="${src}" alt="" onerror="this.style.display='none'" /></div>`
+    ).join('');
+    const moduleItems = modules.map(
+      (key) => `<li><a class="home-svc-module-link" href="#" data-sub="${sub}" data-key="${key}">${t(`services.${sub}.${key}.title`)}</a></li>`
+    ).join('');
+    return `
+      <div class="home-svc-card">
+        <div class="home-svc-carousel" data-svc-carousel="${sub}">
+          <div class="home-svc-carousel-inner">${slides}</div>
+          <div class="home-svc-overlay">
+            <p class="home-svc-card-title">${t(`serviceTab.${sub}`)}</p>
+          </div>
+        </div>
+        <ul class="home-svc-modules">${moduleItems}</ul>
+      </div>`;
+  }).join('');
+  return `
+    <div class="home-svc-section">
+      <div class="home-svc-section-header">
+        <h2 class="home-svc-section-title">${t('services.title')}</h2>
+      </div>
+      <div class="home-svc-inner section-inner">
+        <div class="home-svc-grid">${cards}</div>
+      </div>
+    </div>`;
+}
 
 export function render() {
   const id = getSectionId(ROUTES.HOME);
@@ -23,17 +76,26 @@ export function render() {
   const dots = CAROUSEL_IMAGES.map(
     (_, i) => `<button type="button" class="home-carousel-dot${i === 0 ? ' active' : ''}" data-index="${i}" aria-label="Slide ${i + 1}"></button>`
   ).join('');
-  const blockKeys = [1, 3, 4];
-  const blocks = blockKeys.map(
+  const blocks = [1, 2, 3].map(
     (i, idx) => `
-    <div class="home-block">
+    <div class="home-block" data-solution="${i}" style="cursor:pointer">
       <div class="home-block-img-wrap">
-        <img src="${BLOCK_IMAGES[idx]}" alt="${t('home.block' + i + '.title')}" class="home-block-img" onerror="this.style.display='none'" />
+        <img src="${BLOCK_IMAGES[idx]}" alt="${t('solution.item' + i + '.title')}" class="home-block-img" onerror="this.style.display='none'" />
       </div>
-      <h3 class="home-block-title">${t('home.block' + i + '.title')}</h3>
-      <p class="home-block-text">${t('home.block' + i + '.text')}</p>
+      <div class="home-block-body">
+        <h3 class="home-block-title">${t('solution.item' + i + '.title')}</h3>
+        <p class="home-block-text">${t('solution.item' + i + '.desc')}</p>
+      </div>
     </div>`
   ).join('');
+
+  const listItems = (t('home.intro.li') || '')
+    .split('•')
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .map((item) => `<li>${item}</li>`)
+    .join('');
+
   return `
     <section id="${id}" class="panel home-page">
       <div class="home-banner">
@@ -47,16 +109,40 @@ export function render() {
       </div>
       <div class="home-intro section-inner">
         <p class="home-intro-p">${t('home.intro.p1')}</p>
-        <p class="home-intro-p">${t('home.intro.p2a')}<span class="home-intro-highlight">AZ/NZS ISO 9001</span>${t('home.intro.p2b')}</p>
-        <ul class="home-intro-list">${(t('home.intro.li') || '')
-          .split('•')
-          .map((s) => s.trim())
-          .filter(Boolean)
-          .map((item) => `<li>${item}</li>`)
-          .join('')}</ul>
+        <p class="home-intro-p">
+          ${t('home.intro.p2a')}<span class="home-intro-highlight">${t('home.intro.licence')}</span>${t('home.intro.p2b')}
+        </p>
+        <p class="home-intro-p">${t('home.intro.p3')}</p>
+        <p class="home-intro-p"><strong>${t('home.intro.listTitle')}</strong></p>
+        <ul class="home-intro-list">${listItems}</ul>
       </div>
-      <div class="home-blocks section-inner">
-        ${blocks}
+      ${renderServiceShowcase()}
+      <div class="home-sol-section">
+        <div class="home-svc-section-header">
+          <h2 class="home-svc-section-title">${t('solutions.title')}</h2>
+        </div>
+        <div class="home-sol-inner section-inner">
+          <div class="home-blocks">${blocks}</div>
+        </div>
+      </div>
+      <div class="home-contact-section">
+        <div class="home-svc-section-header">
+          <h2 class="home-svc-section-title">Contact Insight Investigations</h2>
+        </div>
+        <div class="home-contact-inner section-inner">
+          <div class="home-contact-cols">
+            <div class="home-contact-left">
+              <p class="home-contact-row"><strong>W:</strong> <a class="home-contact-link" href="https://${CONTACT.website}" target="_blank">${CONTACT.website}</a></p>
+              <p class="home-contact-row"><strong>P:</strong> <a class="home-contact-link" href="tel:08080000">${CONTACT.phone}</a></p>
+              <p class="home-contact-row"><strong>International:</strong> <a class="home-contact-link" href="tel:+6421456345">${CONTACT.phoneIntl}</a></p>
+            </div>
+            <div class="home-contact-right">
+              <p class="home-contact-row"><strong>${CONTACT.company}</strong></p>
+              <p class="home-contact-row">${CONTACT.poBox}</p>
+              <p class="home-contact-row"><strong>${t('contact.licence')}:</strong> ${CONTACT.licence}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   `;
@@ -64,7 +150,6 @@ export function render() {
 
 export function init(container) {
   if (!container) return;
-  const carouselInner = container.querySelector('.home-carousel-inner');
   const slides = container.querySelectorAll('.home-carousel-slide');
   const dotBtns = container.querySelectorAll('.home-carousel-dot');
   if (slides.length && dotBtns.length) {
@@ -73,15 +158,70 @@ export function init(container) {
       slides.forEach((s, k) => s.classList.toggle('active', k === i));
       dotBtns.forEach((d, k) => d.classList.toggle('active', k === i));
     }
-    dotBtns.forEach((btn, i) => {
-      btn.addEventListener('click', () => goTo(i));
-    });
+
     let current = 0;
-    const autoplay = setInterval(() => {
+    let autoplay = setInterval(() => {
       current += 1;
       goTo(current);
     }, 5000);
+
+    dotBtns.forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        current = i;          // ← 同步 current
+        goTo(current);
+      });
+    });
+
     const carousel = container.querySelector('.home-carousel');
-    if (carousel) carousel.addEventListener('mouseenter', () => clearInterval(autoplay));
+    if (carousel) {
+      carousel.addEventListener('mouseenter', () => clearInterval(autoplay));
+      carousel.addEventListener('mouseleave', () => {   // ← 移出后重启
+        clearInterval(autoplay);
+        autoplay = setInterval(() => {
+          current += 1;
+          goTo(current);
+        }, 5000);
+      });
+    }
   }
+
+  // Service showcase — per-card carousels
+  container.querySelectorAll('[data-svc-carousel]').forEach((card) => {
+    const svcSlides = card.querySelectorAll('.home-svc-slide');
+    if (svcSlides.length <= 1) return;
+    let idx = 0;
+    setInterval(() => {
+      svcSlides[idx].classList.remove('active');
+      idx = (idx + 1) % svcSlides.length;
+      svcSlides[idx].classList.add('active');
+    }, 4000);
+  });
+
+  // Solution card clicks — navigate to Solutions detail
+  container.addEventListener('click', (e) => {
+    const block = e.target.closest('.home-block[data-solution]');
+    if (block) {
+      const sub = block.dataset.solution;
+      window.dispatchEvent(new CustomEvent('app:navigate', { detail: { section: ROUTES.SOLUTIONS, sub } }));
+      return;
+    }
+  });
+
+  // Service showcase — module link clicks
+  container.addEventListener('click', (e) => {
+    const link = e.target.closest('.home-svc-module-link');
+    if (!link) return;
+    e.preventDefault();
+    const sub = link.dataset.sub;
+    const key = link.dataset.key;
+    navigate(ROUTES.SERVICES, sub);
+    setTimeout(() => {
+      const el = document.getElementById(`service-${sub}-${key}`);
+      if (el) {
+        const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 80;
+        const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - 8;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }, 150);
+  });
 }

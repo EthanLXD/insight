@@ -17,6 +17,7 @@ export function bindNav(container) {
       const section = el.getAttribute('data-section');
       const sub = el.getAttribute('data-sub') || null;
       navigate(section, sub);
+      el.blur();
     });
   });
 
@@ -32,6 +33,7 @@ export function bindNav(container) {
     if (!link || !window.matchMedia('(max-width: 900px)').matches) return;
     link.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
       parent.classList.toggle('open');
       const section = link.getAttribute('data-section');
       if (section) navigate(section);

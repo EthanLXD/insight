@@ -5,24 +5,30 @@ import { t } from '../i18n/index.js';
 import { ROUTES } from '../config/index.js';
 import { getSectionId } from '../core/Router.js';
 
-const SOLUTION_IDS = ['1', '2', '3', '4', '5', '6'];
+const SOLUTION_IDS = ['1', '2', '3'];
 const SOLUTION_IMAGES = [
-  '/images/solutions/1.jpg',
-  '/images/solutions/2.jpg',
-  '/images/solutions/3.jpg',
-  '/images/solutions/4.jpg',
-  '/images/solutions/5.jpg',
-  '/images/solutions/6.jpg',
+  '/images/personmissing.png',
+  '/images/evigathering.png',
+  '/images/immigration.png',
 ];
 
 export function getSolutionItem(id) {
   const idx = SOLUTION_IDS.indexOf(String(id));
   if (idx === -1) return null;
+  const n = SOLUTION_IDS[idx];
+  const points = [];
+  for (let i = 1; i <= 8; i++) {
+    const p = t(`solution.item${n}.point${i}`);
+    if (!p || p.startsWith('solution.')) break;
+    points.push(p);
+  }
   return {
-    id: SOLUTION_IDS[idx],
+    id: n,
     image: SOLUTION_IMAGES[idx],
-    title: t('solution.item' + SOLUTION_IDS[idx] + '.title'),
-    desc: t('solution.item' + SOLUTION_IDS[idx] + '.desc'),
+    title: t(`solution.item${n}.title`),
+    desc: t(`solution.item${n}.desc`),
+    detail: t(`solution.item${n}.detail`),
+    points,
   };
 }
 
@@ -55,12 +61,15 @@ export function render() {
         <div class="solutions-grid">
           ${cards}
         </div>
-        <div class="solution-detail" hidden>
-          <a href="#" class="solution-detail-back" data-section="${ROUTES.SOLUTIONS}">${t('solutions.back')}</a>
+      </div>
+      <div class="solution-detail" hidden>
+        <div class="solution-detail-banner">
+          <h2 id="solution-detail-title" class="solution-detail-banner-title"></h2>
+        </div>
+        <div class="solution-detail-body section-inner">
           <div class="solution-detail-img-wrap">
             <img id="solution-detail-img" src="" alt="" class="solution-detail-img" />
           </div>
-          <h3 id="solution-detail-title" class="solution-detail-title"></h3>
           <p id="solution-detail-desc" class="solution-detail-desc"></p>
         </div>
       </div>

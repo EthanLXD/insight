@@ -10,21 +10,14 @@ export function render() {
   return `
     <section id="${id}" class="panel">
       <div class="section-inner">
-        <div class="about-content">
-          <div id="about-founder" class="about-page">
-            <div class="about-founder-wrap">
-              <div class="about-founder-text">
-                <h3 class="about-founder-heading">${t('about.founder.heading')}</h3>
-                <p class="about-founder-p">${t('about.founder.desc')}</p>
-              </div>
-              <div class="about-founder-image-wrap">
-                <img src="/images/founder.jpg" alt="${t('about.founder.title')}" class="about-founder-image" onerror="this.style.display='none'" />
-              </div>
-            </div>
+        <div class="about-layout">
+          <div class="about-left">
+            <p class="about-founder-p">${t('about.founder.desc')}</p>
+            <h3 class="about-qual-heading">${t('about.qual.title')}</h3>
+            <p class="about-founder-p">${t('about.qual.desc')}</p>
           </div>
-          <div id="about-qualifications" class="about-page">
-            <h3 class="about-page-title">${t('about.qual.title')}</h3>
-            <p>${t('about.qual.desc')}</p>
+          <div class="about-founder-image-wrap">
+            <img src="/images/image1.JPG" alt="${t('about.founder.title')}" class="about-founder-image" onerror="this.parentElement.style.display='none'" />
           </div>
         </div>
       </div>

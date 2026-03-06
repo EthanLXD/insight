@@ -35,12 +35,6 @@ function runPageInit(section) {
 }
 
 function applySubState(section, sub) {
-  if (section === ROUTES.SERVICES) {
-    const serviceSub = sub || 'personal';
-    mainEl.querySelectorAll('.service-page').forEach((p) => p.classList.remove('active'));
-    const page = mainEl.querySelector('#service-' + serviceSub);
-    if (page) page.classList.add('active');
-  }
   if (section === ROUTES.ABOUT) {
     const aboutSub = sub || 'founder';
     mainEl.querySelectorAll('.about-page').forEach((p) => p.classList.remove('active'));
@@ -62,7 +56,15 @@ function applySubState(section, sub) {
           if (img) img.src = item.image;
           if (img) img.alt = item.title;
           if (titleEl) titleEl.textContent = item.title;
-          if (descEl) descEl.textContent = item.desc;
+          if (descEl) {
+            const pointsHtml = item.points.length
+              ? `<ul class="solution-detail-points">${item.points.map(p => `<li>${p}</li>`).join('')}</ul>`
+              : '';
+            const detailText = item.detail || item.desc;
+            const paragraphsHtml = detailText.split('\n\n').map(para => `<p>${para.trim()}</p>`).join('');
+            descEl.innerHTML = paragraphsHtml + pointsHtml;
+          }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       } else {
         grid.removeAttribute('hidden');
@@ -79,7 +81,7 @@ function refreshContent() {
   }
   const newHeader = appEl.querySelector('.site-header');
   if (newHeader) {
-    bindNav(newHeader);
+    bindNav(appEl);
     updateNavHighlight(newHeader);
     bindLangSwitch(newHeader);
     updateLangButtons(newHeader, getLang());
@@ -118,7 +120,7 @@ export function mount(rootSelector = '#app') {
   mainEl = appEl.querySelector('.main-content');
   const header = appEl.querySelector('.site-header');
 
-  bindNav(header);
+  bindNav(appEl);
   bindLangSwitch(header);
   updateNavHighlight(header);
   updateLangButtons(header, getLang());

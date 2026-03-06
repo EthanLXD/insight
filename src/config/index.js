@@ -2,8 +2,13 @@
  * 联系信息 - 
  */
 export const CONTACT = {
-  phone: '666688',
-  email: 'info@example.com',
+  phone: '0808 0000',
+  phoneIntl: '+64 (0)21 456 345',
+  email: 'info@insightinvestgation.co.nz',
+  website: 'www.insightinvestgation.co.nz',
+  company: 'INSIGHT Investigations Ltd',
+  poBox: 'PO Box 0635, Greenhithe, Auckland, 0635 – New Zealand',
+  licence: '25-133751',
 };
 
 export const APP = {

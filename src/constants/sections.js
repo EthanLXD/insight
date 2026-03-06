@@ -16,13 +16,9 @@ export const NAV_DROPDOWNS = {
     { id: 'personal', i18nKey: 'nav.services.personal' },
     { id: 'corporate', i18nKey: 'nav.services.corporate' },
     { id: 'legal', i18nKey: 'nav.services.legal' },
-    { id: 'special', i18nKey: 'nav.services.special' },
-  ],
-  [ROUTES.ABOUT]: [
-    { id: 'founder', i18nKey: 'nav.about.founder' },
-    { id: 'qualifications', i18nKey: 'nav.about.qual' },
+    { id: 'international', i18nKey: 'nav.services.international' },
   ],
 };
 
-export const SERVICE_SUBS = ['personal', 'corporate', 'legal', 'special'];
-export const ABOUT_SUBS = ['founder', 'qualifications'];
+export const SERVICE_SUBS = ['personal', 'corporate', 'legal', 'international'];
+export const ABOUT_SUBS = [];
