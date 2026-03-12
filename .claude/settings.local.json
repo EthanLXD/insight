@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git pull origin main --rebase)",
+      "Bash(git add index.html)",
+      "Bash(git rebase --continue)",
+      "Bash(git push -u origin main)",
+      "Bash(npm run build)",
+      "Bash(ls vite.config*)",
+      "Bash(git push origin main)"
+    ]
+  }
+}
