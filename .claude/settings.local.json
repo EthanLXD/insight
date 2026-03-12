@@ -7,7 +7,14 @@
       "Bash(git push -u origin main)",
       "Bash(npm run build)",
       "Bash(ls vite.config*)",
-      "Bash(git push origin main)"
+      "Bash(git push origin main)",
+      "Bash(git -C /Users/ethan/Downloads/insight log --oneline -5)",
+      "Bash(git -C /Users/ethan/Downloads/insight branch -a)",
+      "Bash(git -C /Users/ethan/Downloads/insight status --short)",
+      "Bash(git -C /Users/ethan/Downloads/insight ls-files images/)",
+      "Bash(git -C /Users/ethan/Downloads/insight ls-files)",
+      "Bash(git rm:*)",
+      "Bash(git add:*)"
     ]
   }
 }
