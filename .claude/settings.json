@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/ethan/Downloads/insight log --oneline --all -- \"images/debtor.jpg\")",
+      "Bash(git -C /Users/ethan/Downloads/insight remote get-url origin)",
+      "Bash(git -C /Users/ethan/Downloads/insight log --oneline -10 --all)",
+      "Bash(git -C /Users/ethan/Downloads/insight show HEAD:assets/index-Dnrkk59A.js)",
+      "Bash(git -C /Users/ethan/Downloads/insight show HEAD --name-only)",
+      "Bash(git -C /Users/ethan/Downloads/insight status)",
+      "Bash(git -C /Users/ethan/Downloads/insight diff HEAD --name-only)",
+      "Bash(git -C /Users/ethan/Downloads/insight show HEAD:index.html)",
+      "Bash(git -C /Users/ethan/Downloads/insight show HEAD:assets/index-DVHdWB4Y.js)",
+      "Bash(git -C /Users/ethan/Downloads/insight log --oneline -- \"images/Personal Asset .jpg\")",
+      "Bash(git -C /Users/ethan/Downloads/insight ls-files \"images/Personal Asset .jpg\")",
+      "Bash(git -C /Users/ethan/Downloads/insight ls-files \"images/debtor.jpg\")",
+      "Bash(gh api:*)",
+      "Bash(gh repo:*)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(''''homepage:'''', d.get\\(''''homepage''''\\)\\); print\\(''''has_pages:'''', d.get\\(''''has_pages''''\\)\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d.get\\(''''login''''\\)\\)\")",
+      "Bash(git -C /Users/ethan/Downloads/insight show HEAD:src/pages/Services.js)",
+      "Bash(git -C /Users/ethan/Downloads/insight show HEAD:src/pages/Home.js)",
+      "Bash(git -C /Users/ethan/Downloads/insight diff HEAD -- src/pages/Services.js)",
+      "Bash(xxd)",
+      "Bash(ls /Users/ethan/Downloads/insight/.env*)",
+      "Bash(node -e \":*)",
+      "Bash(node -e \"import\\(''''vite''''\\).then\\(v => console.log\\(v.version\\)\\).catch\\(\\(\\)=>{}\\)\")",
+      "Bash(git -C /Users/ethan/Downloads/insight log --oneline -- index.html)",
+      "Bash(git -C /Users/ethan/Downloads/insight show 2f35140:index.html)",
+      "Bash(git -C:*)"
+    ],
+    "additionalDirectories": [
+      "/tmp"
+    ]
+  }
+}

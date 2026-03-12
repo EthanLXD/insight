@@ -14,7 +14,8 @@
       "Bash(git -C /Users/ethan/Downloads/insight ls-files images/)",
       "Bash(git -C /Users/ethan/Downloads/insight ls-files)",
       "Bash(git rm:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git -C /Users/ethan/Downloads/insight log --oneline --all -- \"images/Personal Asset .jpg\")"
     ]
   }
 }
