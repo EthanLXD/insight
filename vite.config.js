@@ -2,8 +2,11 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   root: '.',
-  base: './',
+  base: '/insight/',
   publicDir: 'public',
+  define: {
+    __IMG_BASE__: JSON.stringify('/insight/images/'),
+  },
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

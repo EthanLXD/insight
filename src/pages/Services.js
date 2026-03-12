@@ -15,30 +15,30 @@ const MODULE_KEYS = {
 
 const MODULE_IMAGES = {
 	personal: {
-		bg: './images/personalInv.jpg',
-		relationship: './images/marriedINV.png',
-		missing: './images/personmissing.png',
-		identity: './images/identify.jpg',
-		assets: './images/Personal Asset .jpg',
+		bg: __IMG_BASE__ + 'personalInv.jpg',
+		relationship: __IMG_BASE__ + 'marriedINV.png',
+		missing: __IMG_BASE__ + 'personmissing.png',
+		identity: __IMG_BASE__ + 'identify.jpg',
+		assets: __IMG_BASE__ + 'personal-asset.jpg',
 	},
 	corporate: {
-		bg: './images/corporate_investigatio.png',
-		partner: './images/detectivebusiness.png',
-		fraud: './images/fraud.jpg',
-		due: './images/diligence.jpg',
-		ip: './images/investagation.jpg',
+		bg: __IMG_BASE__ + 'corporate_investigatio.png',
+		partner: __IMG_BASE__ + 'detectivebusiness.png',
+		fraud: __IMG_BASE__ + 'fraud.jpg',
+		due: __IMG_BASE__ + 'diligence.jpg',
+		ip: __IMG_BASE__ + 'investagation.jpg',
 	},
 	legal: {
-		litigation: './images/litigation.jpg',
-		asset: './images/assettracing.jpg',
-		debtor: './images/debtor.jpg',
-		witness: './images/image2.JPG',
+		litigation: __IMG_BASE__ + 'litigation.jpg',
+		asset: __IMG_BASE__ + 'assettracing.jpg',
+		debtor: __IMG_BASE__ + 'debtor.jpg',
+		witness: __IMG_BASE__ + 'image2.jpg',
 	},
 	international: {
-		bg: './images/chinabackgroundcheck.jpg',
-		corp: './images/chinacorp.jpg',
-		asset: './images/chinaasset.jpg',
-		missing: './images/missingperson.jpg',
+		bg: __IMG_BASE__ + 'chinabackgroundcheck.jpg',
+		corp: __IMG_BASE__ + 'chinacorp.jpg',
+		asset: __IMG_BASE__ + 'chinaasset.jpg',
+		missing: __IMG_BASE__ + 'missingperson.jpg',
 	},
 };
 
@@ -188,4 +188,4 @@ export function init(panel) {
       });
     }
   });
-}
+}// TESTMARKER_XYZ

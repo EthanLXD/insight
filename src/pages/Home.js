@@ -5,32 +5,32 @@ import { t } from '../i18n/index.js';
 import { ROUTES, CONTACT } from '../config/index.js';
 import { getSectionId, navigate } from '../core/Router.js';
 
-const CAROUSEL_IMAGES = ['/images/image1.jpg', '/images/image2.jpg', '/images/image1.jpg'];
+const CAROUSEL_IMAGES = [__IMG_BASE__ + 'image1.jpg', __IMG_BASE__ + 'image2.jpg', __IMG_BASE__ + 'image1.jpg'];
 const BLOCK_IMAGES = [
-  '/images/personmissing.png',
-  '/images/evigathering.png',
-  '/images/immigration.png',
+  __IMG_BASE__ + 'personmissing.png',
+  __IMG_BASE__ + 'evigathering.png',
+  __IMG_BASE__ + 'immigration.png',
 ];
 
 const SERVICE_CARDS = [
   {
     sub: 'personal',
-    images: ['/images/personalInv.jpg', '/images/marriedINV.png', '/images/personmissing.png'],
+    images: [__IMG_BASE__ + 'personalInv.jpg', __IMG_BASE__ + 'marriedINV.png', __IMG_BASE__ + 'personmissing.png'],
     modules: ['bg', 'relationship', 'missing', 'identity', 'assets'],
   },
   {
     sub: 'corporate',
-    images: ['/images/corporate_investigatio.png', '/images/detectivebusiness.png', '/images/fraud.jpg'],
+    images: [__IMG_BASE__ + 'corporate_investigatio.png', __IMG_BASE__ + 'detectivebusiness.png', __IMG_BASE__ + 'fraud.jpg'],
     modules: ['bg', 'partner', 'fraud', 'due', 'ip'],
   },
   {
     sub: 'legal',
-    images: ['/images/litigation.jpg', '/images/assettracing.jpg', '/images/debtor.jpg'],
+    images: [__IMG_BASE__ + 'litigation.jpg', __IMG_BASE__ + 'assettracing.jpg', __IMG_BASE__ + 'debtor.jpg'],
     modules: ['litigation', 'asset', 'debtor', 'witness'],
   },
   {
     sub: 'international',
-    images: ['/images/chinabackgroundcheck.jpg', '/images/chinacorp.jpg', '/images/chinaasset.jpg'],
+    images: [__IMG_BASE__ + 'chinabackgroundcheck.jpg', __IMG_BASE__ + 'chinacorp.jpg', __IMG_BASE__ + 'chinaasset.jpg'],
     modules: ['bg', 'corp', 'asset', 'missing'],
   },
 ];
