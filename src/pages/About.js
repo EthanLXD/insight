@@ -17,7 +17,7 @@ export function render() {
             <p class="about-founder-p">${t('about.qual.desc')}</p>
           </div>
           <div class="about-founder-image-wrap">
-            <img src="/images/image1.JPG" alt="${t('about.founder.title')}" class="about-founder-image" onerror="this.parentElement.style.display='none'" />
+            <img src="${__IMG_BASE__ + 'image1.jpg'}" alt="${t('about.founder.title')}" class="about-founder-image" onerror="this.parentElement.style.display='none'" />
           </div>
         </div>
       </div>

@@ -7,9 +7,9 @@ import { getSectionId } from '../core/Router.js';
 
 const SOLUTION_IDS = ['1', '2', '3'];
 const SOLUTION_IMAGES = [
-  '/images/personmissing.png',
-  '/images/evigathering.png',
-  '/images/immigration.png',
+  __IMG_BASE__ + 'personmissing.png',
+  __IMG_BASE__ + 'evigathering.png',
+  __IMG_BASE__ + 'immigration.png',
 ];
 
 export function getSolutionItem(id) {
