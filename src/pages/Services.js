@@ -15,30 +15,30 @@ const MODULE_KEYS = {
 
 const MODULE_IMAGES = {
 	personal: {
-		bg: '/images/personalInv.jpg',
-		relationship: '/images/marriedINV.png',
-		missing: '/images/personmissing.png',
-		identity: '/images/identify.jpg',
-		assets: '/images/Personal Asset .jpg',
+		bg: './images/personalInv.jpg',
+		relationship: './images/marriedINV.png',
+		missing: './images/personmissing.png',
+		identity: './images/identify.jpg',
+		assets: './images/Personal Asset .jpg',
 	},
 	corporate: {
-		bg: '/images/corporate_investigatio.png',
-		partner: '/images/detectivebusiness.png',
-		fraud: '/images/fraud.jpg',
-		due: '/images/diligence.jpg',
-		ip: '/images/investagation.jpg',
+		bg: './images/corporate_investigatio.png',
+		partner: './images/detectivebusiness.png',
+		fraud: './images/fraud.jpg',
+		due: './images/diligence.jpg',
+		ip: './images/investagation.jpg',
 	},
 	legal: {
-		litigation: '/images/litigation.jpg',
-		asset: '/images/assettracing.jpg',
-		debtor: '/images/debtor.jpg',
-		witness: '/images/image2.JPG',
+		litigation: './images/litigation.jpg',
+		asset: './images/assettracing.jpg',
+		debtor: './images/debtor.jpg',
+		witness: './images/image2.JPG',
 	},
 	international: {
-		bg: '/images/chinabackgroundcheck.jpg',
-		corp: '/images/chinacorp.jpg',
-		asset: '/images/chinaasset.jpg',
-		missing: '/images/missingperson.jpg',
+		bg: './images/chinabackgroundcheck.jpg',
+		corp: './images/chinacorp.jpg',
+		asset: './images/chinaasset.jpg',
+		missing: './images/missingperson.jpg',
 	},
 };
 
